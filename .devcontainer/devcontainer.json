@@ -1,0 +1,16 @@
+{
+  "name": "Clinic-OS Workshop",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "features": {
+    "ghcr.io/joedmck/devcontainer-features/wrangler:1": {}
+  },
+  "postCreateCommand": "curl -fsSL https://claude.ai/install.sh | sh && npm install -g astro",
+  "forwardPorts": [4321, 8788],
+  "portsAttributes": {
+    "4321": { "label": "Astro Dev", "onAutoForward": "openBrowser" },
+    "8788": { "label": "Wrangler Dev", "onAutoForward": "notify" }
+  },
+  "remoteEnv": {
+    "NODE_OPTIONS": "--max-old-space-size=4096"
+  }
+}
