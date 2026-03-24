@@ -4,7 +4,7 @@
   "features": {
     "ghcr.io/joedmck/devcontainer-features/wrangler:1": {}
   },
-  "postCreateCommand": "curl -fsSL https://claude.ai/install.sh | sh && npm install -g astro",
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code astro",
   "forwardPorts": [4321, 8788],
   "portsAttributes": {
     "4321": { "label": "Astro Dev", "onAutoForward": "openBrowser" },
