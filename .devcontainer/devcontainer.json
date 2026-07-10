@@ -5,6 +5,7 @@
     "ghcr.io/joedmck/devcontainer-features/wrangler:1": {}
   },
   "postCreateCommand": "npm install -g @anthropic-ai/claude-code@latest astro@latest",
+  "postStartCommand": "for d in . clinic-os; do if [ -f \"$d/scripts/lib/git-topology.js\" ]; then node \"$d/scripts/lib/git-topology.js\" \"$d\" || true; break; fi; done",
   "forwardPorts": [4321, 8788],
   "portsAttributes": {
     "4321": { "label": "Astro Dev", "onAutoForward": "openBrowser" },
