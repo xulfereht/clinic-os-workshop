@@ -1,0 +1,8 @@
+# PII Prevention — data export formats (SPEC-2026-06-05-pii-git-prevention)
+prod-backup*.sql
+prod-dump*.sql
+*.sql.dump
+*.sql.gz
+*.csv
+*.tsv
+.pre-*/
