@@ -3,6 +3,8 @@ prod-backup*.sql
 prod-dump*.sql
 *.sql.dump
 *.sql.gz
-*.csv
-*.tsv
+prod-*.csv
+prod-*.tsv
+export-*.csv
+export-*.tsv
 .pre-*/
