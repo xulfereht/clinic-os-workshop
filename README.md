@@ -14,15 +14,16 @@ Cloudflare Pages/D1/R2에 바로 배포하는 경로를 파일럿합니다. Code
 1. 이 템플릿으로 본인 비공개 GitHub 저장소를 만듭니다.
 2. Node.js LTS와 Git for Windows를 설치하고 저장소를 내려받습니다.
 3. Claude Code 또는 Codex 중 본인이 구독한 에이전트 하나를 설치합니다.
-4. Windows 터미널에서 다음 값을 설정합니다. PowerShell에서는 `npm` 대신 `npm.cmd`를
-   사용합니다.
+4. 선택한 에이전트가 HQ 스타터를 받은 직후, 설치를 시작하기 전에 프로젝트 전용
+   프로파일을 저장합니다.
 
    ```powershell
-   $env:CLINIC_WORKSHOP_PROFILE = "windows-native"
-   $env:CLINIC_NO_LOCAL_DEV = "true"
+   npm.cmd run workshop:profile -- windows-native
+   npm.cmd run workshop:profile -- --show
    ```
 
-5. `wrangler login`으로 본인 Cloudflare 계정에 로그인하거나, 워크숍에서 발급한
+   이 설정은 해당 프로젝트에만 적용됩니다. Windows 전체에 `setx`로 설정하지 않습니다.
+5. `npx.cmd wrangler login`으로 본인 Cloudflare 계정에 로그인하거나, 워크숍에서 발급한
    클리닉별 최소권한 토큰을 설정합니다.
 6. 선택한 에이전트에게 다음처럼 요청합니다.
 
@@ -46,6 +47,9 @@ Codespaces 때처럼 실제 배포본을 보면서 수정하되, 최종 인수 �
 > 토큰 방식을 선택할 경우 에이전트 종류와 무관하게 클리닉별 최소권한 토큰만 사용합니다.
 > 다른 클리닉과 공유하지 말고 워크숍 종료 후 폐기합니다. 정식 과정은 Cloudflare Pages
 > Git Integration과 HQ 제한권한 프로비저닝으로 전환할 예정입니다.
+
+전체 준비물, Claude Code/Codex 설치 선택, 재부팅 후 재개 방법과 오류 대응은
+ClinicOS 가이드의 **Windows에서 Claude Code 또는 Codex로 시작하기** 문서를 따릅니다.
 
 ---
 

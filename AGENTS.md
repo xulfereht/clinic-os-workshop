@@ -6,12 +6,15 @@ This template supports additive, agent-neutral tracks.
 - `CLINIC_WORKSHOP_PROFILE=codex-cloud`: optional Codex Cloud fallback.
 - Profile unset: existing Claude Code + Codespaces/macOS/WSL workshop flow.
 
-Never infer the track from the agent name. Read the environment variable first.
+Never infer the track from the agent name. Before the starter exists, follow the track explicitly
+chosen by the user. After installation, read the repository-local runtime profile first.
 
 If `package.json` is absent, this is the pre-bootstrap template. Follow the HQ device-authorization
 flow described in `README.md`, install the issued starter into this repository, then read the
 starter's replacement `AGENTS.md` before continuing. Claude Code instead continues through the
 starter's replacement `CLAUDE.md`; both converge on `.agent/AGENT_RUNTIME.md`.
+For a new native-Windows install, run `npm.cmd run workshop:profile -- windows-native` immediately
+after the issued starter appears and before any setup command.
 
 For `windows-native` or `codex-cloud`:
 
