@@ -27,8 +27,13 @@ AI 에이전트 기반 한의원 웹사이트 구축 워크숍 환경입니다.
    ```text
    AGENTS.md를 먼저 읽고 ClinicOS 스타터를 설치해줘.
    codex-cloud 원격 전용 프로파일을 유지하고 로컬 D1이나 npm run dev는 실행하지 마.
-   설치 후 Cloudflare Preview URL로 확인해줘.
+   실제 클라이언트 전용 Pages/D1/R2를 만들고 배포 가드로 Production 브랜치까지 배포해줘.
+   커스텀 도메인은 연결하지 말고 발급된 pages.dev URL로 확인하게 해줘.
    ```
+
+배포 가드는 별도 Preview에서 먼저 검증한 뒤 같은 빌드를 Production 브랜치로 승격합니다.
+Codespaces 때처럼 실제 배포본을 보면서 수정하되, 최종 인수 전까지 커스텀 도메인은 붙이지
+않습니다.
 
 Codex 앱의 Local/Worktree는 원장님 PC에서 실행되고 Cloud만 원격 Linux에서 실행됩니다.
 Local Windows를 선택한 경우에는 `codex-cloud`가 아니라 ClinicOS의 `codex-windows` 제한

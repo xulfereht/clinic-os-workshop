@@ -14,9 +14,10 @@ starter's replacement `AGENTS.md` before continuing.
 For `codex-cloud`:
 
 - do not run local D1, `workerd`, `wrangler dev`, or `npm run dev`;
-- use Cloudflare remote resources and a Preview URL;
+- use the clinic's dedicated Cloudflare remote resources and `*.pages.dev` URL;
 - never commit Cloudflare tokens, `clinic.json`, `wrangler.toml`, or HQ installation tokens;
-- keep production promotion behind the ClinicOS deploy guard;
+- allow the real Production branch only through ClinicOS deploy guard's Preview verification;
+- do not attach a custom domain before client acceptance;
 - report a missing Cloudflare account/token or missing HQ binding as a setup blocker instead of
   silently switching to a local database.
 
