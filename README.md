@@ -4,29 +4,32 @@ AI 에이전트 기반 한의원 웹사이트 구축 워크숍 환경입니다.
 
 > **총 소요 시간**: 처음부터 기본 홈페이지 확인까지 **약 7~10분**
 
-## 3기 추가 경로 · Codex Windows 앱 + Cloud
+## 3기 파일럿 · Windows 네이티브 + 원격 Cloudflare
 
-기존 Claude Code + Codespaces/macOS/WSL 방식은 아래에 그대로 유지됩니다. 3기에서는 WSL
-설치 없이 시작할 수 있도록 Codex Windows 앱의 Cloud 실행 경로를 추가합니다.
+기존 Claude Code + Codespaces/macOS/WSL 방식은 아래에 그대로 유지됩니다. 3기에서는
+일반 Windows 터미널에서 Claude Code 또는 Codex 중 하나를 사용하고, 로컬 workerd 대신
+Cloudflare Pages/D1/R2에 바로 배포하는 경로를 파일럿합니다. Codex 앱이나 Codex Cloud는
+필수 준비물이 아닙니다.
 
 1. 이 템플릿으로 본인 비공개 GitHub 저장소를 만듭니다.
-2. Windows의 ChatGPT 데스크톱 앱에서 Codex를 선택하고 저장소를 연결합니다.
-3. Codex Cloud 환경에 다음 값을 설정합니다.
+2. Node.js LTS와 Git for Windows를 설치하고 저장소를 내려받습니다.
+3. Claude Code 또는 Codex 중 본인이 구독한 에이전트 하나를 설치합니다.
+4. Windows 터미널에서 다음 값을 설정합니다. PowerShell에서는 `npm` 대신 `npm.cmd`를
+   사용합니다.
 
-   ```text
-   CLINIC_WORKSHOP_PROFILE=codex-cloud
-   CLINIC_NO_LOCAL_DEV=true
-   CLOUDFLARE_ACCOUNT_ID=<본인 Cloudflare 계정 ID>
-   CLOUDFLARE_API_TOKEN=<클리닉별 최소권한 토큰>
-   CLINIC_ADMIN_EMAIL=<관리자 이메일>
-   CLINIC_ADMIN_PASSWORD=<첫 로그인 후 변경할 초기 비밀번호>
+   ```powershell
+   $env:CLINIC_WORKSHOP_PROFILE = "windows-native"
+   $env:CLINIC_NO_LOCAL_DEV = "true"
    ```
 
-4. 새 대화의 실행 위치를 **Cloud**로 선택하고 다음처럼 요청합니다.
+5. `wrangler login`으로 본인 Cloudflare 계정에 로그인하거나, 워크숍에서 발급한
+   클리닉별 최소권한 토큰을 설정합니다.
+6. 선택한 에이전트에게 다음처럼 요청합니다.
 
    ```text
-   AGENTS.md를 먼저 읽고 ClinicOS 스타터를 설치해줘.
-   codex-cloud 원격 전용 프로파일을 유지하고 로컬 D1이나 npm run dev는 실행하지 마.
+   네 실행환경의 진입 문서(Claude Code는 CLAUDE.md, Codex는 AGENTS.md)를 먼저 읽고
+   ClinicOS 스타터를 설치해줘.
+   windows-native 원격 전용 프로파일을 유지하고 로컬 D1이나 npm run dev는 실행하지 마.
    실제 클라이언트 전용 Pages/D1/R2를 만들고 배포 가드로 Production 브랜치까지 배포해줘.
    커스텀 도메인은 연결하지 말고 발급된 pages.dev URL로 확인하게 해줘.
    ```
@@ -35,13 +38,14 @@ AI 에이전트 기반 한의원 웹사이트 구축 워크숍 환경입니다.
 Codespaces 때처럼 실제 배포본을 보면서 수정하되, 최종 인수 전까지 커스텀 도메인은 붙이지
 않습니다.
 
-Codex 앱의 Local/Worktree는 원장님 PC에서 실행되고 Cloud만 원격 Linux에서 실행됩니다.
-Local Windows를 선택한 경우에는 `codex-cloud`가 아니라 ClinicOS의 `codex-windows` 제한
-프로파일이 필요합니다. 3기 기본 수업은 Cloud를 사용합니다.
+에이전트는 조작 인터페이스이고 ClinicOS 런타임은 Node/Git/Cloudflare입니다. Claude Code는
+`CLAUDE.md`, Codex는 `AGENTS.md`를 진입점으로 읽고, 두 문서는 같은 런타임 계약·스킬
+레지스트리·워크플로·상태·가드레일로 연결됩니다.
+`codex-cloud`는 로컬 PC 사용이 곤란한 경우의 선택적 대체 경로입니다.
 
-> 현재 파일럿은 Codex가 Wrangler를 실행할 수 있도록 Cloudflare 토큰을 환경변수로
-> 사용합니다. 다른 클리닉과 토큰을 공유하지 말고 워크숍 종료 후 폐기합니다. 정식 과정은
-> Cloudflare Pages Git Integration과 HQ 제한권한 프로비저닝으로 전환할 예정입니다.
+> 토큰 방식을 선택할 경우 에이전트 종류와 무관하게 클리닉별 최소권한 토큰만 사용합니다.
+> 다른 클리닉과 공유하지 말고 워크숍 종료 후 폐기합니다. 정식 과정은 Cloudflare Pages
+> Git Integration과 HQ 제한권한 프로비저닝으로 전환할 예정입니다.
 
 ---
 
