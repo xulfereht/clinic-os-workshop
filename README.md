@@ -4,7 +4,45 @@ AI 에이전트 기반 한의원 웹사이트 구축 워크숍 환경입니다.
 
 > **총 소요 시간**: 처음부터 기본 홈페이지 확인까지 **약 7~10분**
 
+## 3기 추가 경로 · Codex Windows 앱 + Cloud
+
+기존 Claude Code + Codespaces/macOS/WSL 방식은 아래에 그대로 유지됩니다. 3기에서는 WSL
+설치 없이 시작할 수 있도록 Codex Windows 앱의 Cloud 실행 경로를 추가합니다.
+
+1. 이 템플릿으로 본인 비공개 GitHub 저장소를 만듭니다.
+2. Windows의 ChatGPT 데스크톱 앱에서 Codex를 선택하고 저장소를 연결합니다.
+3. Codex Cloud 환경에 다음 값을 설정합니다.
+
+   ```text
+   CLINIC_WORKSHOP_PROFILE=codex-cloud
+   CLINIC_NO_LOCAL_DEV=true
+   CLOUDFLARE_ACCOUNT_ID=<본인 Cloudflare 계정 ID>
+   CLOUDFLARE_API_TOKEN=<클리닉별 최소권한 토큰>
+   CLINIC_ADMIN_EMAIL=<관리자 이메일>
+   CLINIC_ADMIN_PASSWORD=<첫 로그인 후 변경할 초기 비밀번호>
+   ```
+
+4. 새 대화의 실행 위치를 **Cloud**로 선택하고 다음처럼 요청합니다.
+
+   ```text
+   AGENTS.md를 먼저 읽고 ClinicOS 스타터를 설치해줘.
+   codex-cloud 원격 전용 프로파일을 유지하고 로컬 D1이나 npm run dev는 실행하지 마.
+   설치 후 Cloudflare Preview URL로 확인해줘.
+   ```
+
+Codex 앱의 Local/Worktree는 원장님 PC에서 실행되고 Cloud만 원격 Linux에서 실행됩니다.
+Local Windows를 선택한 경우에는 `codex-cloud`가 아니라 ClinicOS의 `codex-windows` 제한
+프로파일이 필요합니다. 3기 기본 수업은 Cloud를 사용합니다.
+
+> 현재 파일럿은 Codex가 Wrangler를 실행할 수 있도록 Cloudflare 토큰을 환경변수로
+> 사용합니다. 다른 클리닉과 토큰을 공유하지 말고 워크숍 종료 후 폐기합니다. 정식 과정은
+> Cloudflare Pages Git Integration과 HQ 제한권한 프로비저닝으로 전환할 예정입니다.
+
 ---
+
+## 기존 경로 · Claude Code + Codespaces/macOS/WSL
+
+아래 내용은 기존 코호트와 이미 운영 중인 원장님을 위한 절차이며 계속 지원합니다.
 
 ## 시작하기 (원장님용)
 
